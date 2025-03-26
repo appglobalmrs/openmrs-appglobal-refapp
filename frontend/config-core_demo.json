@@ -4,14 +4,18 @@
     "showUpcomingAppointments": true,
     "extensionSlots": {
       "action-menu-patient-chart-items-slot": {
-        "order": ["order-basket-action-menu"]
+        "order": [
+          "order-basket-action-menu"
+        ]
       }
     }
   },
   "@openmrs/esm-ward-app": {
     "extensionSlots": {
       "action-menu-ward-patient-items-slot": {
-        "add": ["order-basket-action-menu"]
+        "add": [
+          "order-basket-action-menu"
+        ]
       }
     }
   },
@@ -47,6 +51,14 @@
     "defaultFacilityUrl": ""
   },
   "@openmrs/esm-styleguide": {
-    "Brand color #1": "#005d5d"
+    "Brand color #1": "#3B527D",
+    "Brand color #2": "#0D5EF5",
+    "Brand color #3": "#3B527D"
+  },
+  "@openmrs/esm-login-app": {
+    "logo": {
+      "src": "${openmrsSpaBase}/globalcarelogo.png",
+      "alt": "logo"
+    }
   }
 }
