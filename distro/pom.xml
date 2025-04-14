@@ -33,7 +33,6 @@
     <metadatamapping.version>1.6.0</metadatamapping.version>
     <openconceptlab.version>2.4.0</openconceptlab.version>
     <attachments.version>3.7.0</attachments.version>
-    <referencedemodata.version>2.5.0</referencedemodata.version>
     <queue.version>2.6.0</queue.version>
     <appointments.version>2.1.0-20250318.070530-1</appointments.version>
     <teleconsultation.version>2.1.0-20250318.154145-1</teleconsultation.version>
@@ -127,12 +126,6 @@
       <groupId>org.openmrs.module</groupId>
       <artifactId>attachments-omod</artifactId>
       <version>${attachments.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.openmrs.module</groupId>
-      <artifactId>referencedemodata-omod</artifactId>
-      <version>${referencedemodata.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -232,7 +225,6 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
