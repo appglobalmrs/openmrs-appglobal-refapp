@@ -15,7 +15,7 @@ COPY distro ./distro/
 RUN git clone --single-branch --branch main https://github.com/openmrs/openmrs-module-clientregistry.git /tmp/clientregistry \
     && cd /tmp/clientregistry \
     && mvn clean install -DskipTests \
-    && cp omod/target/clientregistry-*.omod /openmrs_distro/distro/
+    && cp omod/target/clientregistry-*.omod /openmrs_distro/distro/target/sdk-distro/web/openmrs_modules/
 
 # Build the distro, but only deploy from the amd64 build
 RUN --mount=type=secret,id=m2settings,target=/usr/share/maven/ref/settings-docker.xml if [[ "$MVN_ARGS" != "deploy" || "$(arch)" = "x86_64" ]]; then mvn $MVN_ARGS_SETTINGS $MVN_ARGS; else mvn $MVN_ARGS_SETTINGS install; fi
