@@ -11,6 +11,12 @@ ARG MVN_ARGS="install"
 COPY pom.xml ./
 COPY distro ./distro/
 
+# Clone and build the clientregistry module
+RUN git clone --single-branch --branch main https://github.com/openmrs/openmrs-module-clientregistry.git /tmp/clientregistry \
+    && cd /tmp/clientregistry \
+    && mvn clean install -DskipTests \
+    && cp omod/target/clientregistry-*.omod /openmrs_distro/distro/
+
 # Build the distro, but only deploy from the amd64 build
 RUN --mount=type=secret,id=m2settings,target=/usr/share/maven/ref/settings-docker.xml if [[ "$MVN_ARGS" != "deploy" || "$(arch)" = "x86_64" ]]; then mvn $MVN_ARGS_SETTINGS $MVN_ARGS; else mvn $MVN_ARGS_SETTINGS install; fi
 
@@ -18,7 +24,7 @@ RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs_core/openmrs.war /op
 
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs-distro.properties /openmrs/distribution/
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/openmrs_modules /openmrs/distribution/openmrs_modules/
-RUN cp /openmrs_distro/distro/clientregistry-1.1.8-SNAPSHOT.omod /openmrs/distribution/openmrs_modules/
+RUN cp -R /openmrs_distro/distro/* /openmrs/distribution/
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/openmrs_owas /openmrs/distribution/openmrs_owas/
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/openmrs_config /openmrs/distribution/openmrs_config/
 
