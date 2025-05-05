@@ -24,7 +24,7 @@ RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs_core/openmrs.war /op
 
 RUN cp /openmrs_distro/distro/target/sdk-distro/web/openmrs-distro.properties /openmrs/distribution/
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/openmrs_modules /openmrs/distribution/openmrs_modules/
-RUN cp -R /openmrs_distro/distro/* /openmrs/distribution/
+RUN cp -R /openmrs_distro/distro/clientregistry-*.omod /openmrs/distribution/openmrs_modules
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/openmrs_owas /openmrs/distribution/openmrs_owas/
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/openmrs_config /openmrs/distribution/openmrs_config/
 
